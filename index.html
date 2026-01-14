@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft 服务器 - mcplayer.jsw.ac.cn</title>
+    <meta name="description" content="Minecraft Java Edition Server - mcplayer.jsw.ac.cn">
+    <title>Minecraft Server - mcplayer.jsw.ac.cn</title>
     <style>
         * {
             margin: 0;
@@ -12,311 +13,346 @@
         }
 
         body {
-            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 100%;
-            padding: 40px;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo {
-            font-size: 48px;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #000000;
         }
 
         h1 {
-            color: #333;
-            font-size: 28px;
+            font-size: clamp(24px, 5vw, 36px);
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .subtitle {
-            color: #666;
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 18px);
+            margin-top: 10px;
         }
 
         .server-address {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
+            background: #f5f5f5;
+            border: 2px solid #000000;
+            padding: 30px 20px;
+            margin: 30px 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .server-address::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .server-address-label {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            position: relative;
+            font-size: clamp(14px, 3vw, 16px);
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .server-address-text {
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            position: relative;
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 700;
+            word-break: break-all;
+            user-select: all;
         }
 
         .info-section {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .info-item {
-            display: flex;
-            align-items: center;
+            padding: 15px;
             margin-bottom: 15px;
-            padding: 12px;
-            background: white;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-
-        .info-item:hover {
-            transform: translateX(5px);
-        }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .icon {
-            font-size: 24px;
-            margin-right: 15px;
-            min-width: 30px;
-            text-align: center;
-        }
-
-        .info-content {
-            flex: 1;
+            border: 1px solid #000000;
+            background: #ffffff;
         }
 
         .info-label {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 4px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: clamp(14px, 3vw, 16px);
         }
 
         .info-value {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .highlight {
-            color: #667eea;
-            font-weight: bold;
+            font-size: clamp(14px, 3vw, 16px);
         }
 
         .steps {
-            margin-top: 30px;
+            margin: 40px 0;
         }
 
         .steps h2 {
-            color: #333;
-            font-size: 20px;
-            margin-bottom: 15px;
-            text-align: center;
+            font-size: clamp(18px, 4vw, 24px);
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 10px;
         }
 
         .step {
-            display: flex;
-            margin-bottom: 15px;
-            align-items: start;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #000000;
+            background: #f5f5f5;
         }
 
         .step-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
+            font-weight: 700;
+            font-size: clamp(16px, 3.5vw, 18px);
+            margin-bottom: 5px;
         }
 
         .step-content {
-            flex: 1;
-            padding-top: 4px;
+            font-size: clamp(14px, 3vw, 16px);
         }
 
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 50px;
             padding-top: 20px;
-            border-top: 2px solid #e9ecef;
-            color: #666;
-            font-size: 14px;
+            border-top: 2px solid #000000;
+            font-size: clamp(12px, 2.5vw, 14px);
         }
 
         .beian-info {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e9ecef;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #000000;
         }
 
         .beian-item {
-            margin: 8px 0;
-            font-size: 12px;
+            margin: 10px 0;
         }
 
         .beian-item a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            color: #000000;
+            text-decoration: underline;
         }
 
-        .beian-item a:hover {
-            color: #667eea;
+        .beian-item a:hover,
+        .beian-item a:focus {
+            text-decoration: none;
+            outline: 2px solid #000000;
+            outline-offset: 2px;
         }
 
         .beian-icon {
             width: 14px;
             height: 14px;
             vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        /* 高对比度模式支持 */
+        @media (prefers-contrast: high) {
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+            .server-address {
+                border-width: 3px;
+            }
+        }
+
+        /* 减少动画模式支持 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* 打印样式 */
+        @media print {
+            body {
+                background: white;
+            }
+            .server-address {
+                border: 2px solid black;
+            }
+        }
+
+        /* 焦点可见性 */
+        *:focus-visible {
+            outline: 3px solid #000000;
+            outline-offset: 3px;
+        }
+
+        /* 小屏幕优化 */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .server-address {
+                padding: 20px 15px;
+            }
+            .step {
+                padding: 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo">🎮</div>
-            <h1>Minecraft 服务器</h1>
-            <p class="subtitle">欢迎加入我们的游戏世界</p>
-        </div>
+        <header class="header">
+            <h1 id="main-title">Minecraft Server</h1>
+            <p class="subtitle" id="subtitle">Welcome to Our Gaming World</p>
+        </header>
 
-        <div class="server-address">
-            <div class="server-address-label">服务器地址</div>
-            <div class="server-address-text">mcplayer.jsw.ac.cn</div>
-        </div>
+        <main>
+            <section class="server-address" aria-labelledby="address-label">
+                <div class="server-address-label" id="address-label">Server Address</div>
+                <div class="server-address-text" role="text" aria-label="Server address mcplayer.jsw.ac.cn">mcplayer.jsw.ac.cn</div>
+            </section>
 
-        <div class="info-section">
-            <div class="info-item">
-                <div class="icon">📋</div>
-                <div class="info-content">
-                    <div class="info-label">游戏版本</div>
-                    <div class="info-value">Minecraft Java版</div>
+            <section class="info-section" aria-labelledby="info-heading">
+                <h2 id="info-heading" class="sr-only">Server Information</h2>
+                
+                <div class="info-item">
+                    <div class="info-label" id="version-label">Game Version</div>
+                    <div class="info-value" aria-labelledby="version-label">Minecraft Java Edition</div>
                 </div>
-            </div>
 
-            <div class="info-item">
-                <div class="icon">⚙️</div>
-                <div class="info-content">
-                    <div class="info-label">版本要求</div>
-                    <div class="info-value"><span class="highlight">1.21.10</span> 及以上版本</div>
+                <div class="info-item">
+                    <div class="info-label" id="requirement-label">Version Requirement</div>
+                    <div class="info-value" aria-labelledby="requirement-label">All Java Edition versions supported</div>
                 </div>
-            </div>
 
-            <div class="info-item">
-                <div class="icon">🌐</div>
-                <div class="info-content">
-                    <div class="info-label">服务器类型</div>
-                    <div class="info-value">多人联机服务器</div>
+                <div class="info-item">
+                    <div class="info-label" id="type-label">Server Type</div>
+                    <div class="info-value" aria-labelledby="type-label">Multiplayer Server</div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div class="steps">
-            <h2>💡 如何加入服务器</h2>
-            
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">启动 Minecraft Java版客户端（确保版本为 1.21.10 或更高）</div>
-            </div>
+            <section class="steps" aria-labelledby="steps-heading">
+                <h2 id="steps-heading">How to Join the Server</h2>
+                
+                <div class="step">
+                    <div class="step-number">Step 1</div>
+                    <div class="step-content">Launch Minecraft Java Edition client</div>
+                </div>
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">在主菜单选择"多人游戏"</div>
-            </div>
+                <div class="step">
+                    <div class="step-number">Step 2</div>
+                    <div class="step-content">Select "Multiplayer" from the main menu</div>
+                </div>
 
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">点击"添加服务器"或"直接连接"</div>
-            </div>
+                <div class="step">
+                    <div class="step-number">Step 3</div>
+                    <div class="step-content">Click "Add Server" or "Direct Connect"</div>
+                </div>
 
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">在服务器地址栏输入：<span class="highlight">mcplayer.jsw.ac.cn</span></div>
-            </div>
+                <div class="step">
+                    <div class="step-number">Step 4</div>
+                    <div class="step-content">Enter server address: <strong>mcplayer.jsw.ac.cn</strong></div>
+                </div>
 
-            <div class="step">
-                <div class="step-number">5</div>
-                <div class="step-content">点击"完成"或"加入服务器"开始游戏！</div>
-            </div>
-        </div>
+                <div class="step">
+                    <div class="step-number">Step 5</div>
+                    <div class="step-content">Click "Done" or "Join Server" to start playing!</div>
+                </div>
+            </section>
+        </main>
 
-        <div class="footer">
-            <p>🎉 祝您游戏愉快！</p>
+        <footer class="footer">
+            <p id="enjoy-text">Enjoy your game!</p>
             <div class="beian-info">
                 <p class="beian-item">
                     <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
-                        ICP备案号：蜀ICP备2025143400号
+                        <span id="icp-text">ICP Registration: </span>蜀ICP备2025143400号
                     </a>
                 </p>
                 <p class="beian-item">
-                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51172402000176" target="_blank" rel="noopener noreferrer">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFWSURBVDhPY/wPBAx4ACMDHjBqIxqArY1aW1tZli5dKrt8+XLF5cuXKy9btkxp6dKlCkuWLJFdvHix5KJFi8SXLFkitHjxYv6FCxfyLliwgGvBggWc8+fP55w3bx7HvHnz2OfNm8c2d+5c1rlz57LMnTuXec6cOcyzZ89mmj17NuPs2bMZZ82axTBz5kyGGTNmMMiAAQSAiKmpqRkARo4cyQjhAyUKSkpKjFxcXCZ6enp6ampq6srKyppKSkpaioqKOvLy8kZSUlLGEhISxuLi4qYiIiKmQkJCZvz8/Gb8/Pxm3NzcZlxcXGacnJxmnJycpmxsbKasrKwmLCwsJszMzMZMTExGjIyMhgwMDAb//v1j+Pfv3/9///79//v37/8/f/78+fPnz5/fv3///v379+/v37+//vr16+fPnz9//Pjx4/v377++ffv25evXr1++fPny+fPnL58+ffr86dOnT58+ffr08ePHjx8+fPgAAN9hMM3ZVnXTAAAAAElFTkSuQmCC" alt="公安备案" class="beian-icon">
-                        公安备案号：川公网安备51172402000176号
+                    <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51172402000176" target="_blank" rel="noopener noreferrer">
+                        <img src="/ghs.png" alt="" class="beian-icon">
+                        <span id="police-text">Police Registration: </span>川公网安备51172402000176号
                     </a>
                 </p>
             </div>
-        </div>
+        </footer>
     </div>
+
+    <script>
+        // 多语言支持
+        const translations = {
+            'zh-CN': {
+                title: 'Minecraft 服务器',
+                subtitle: '欢迎加入我们的游戏世界',
+                addressLabel: '服务器地址',
+                versionLabel: '游戏版本',
+                versionValue: 'Minecraft Java版',
+                requirementLabel: '版本要求',
+                requirementValue: '支持所有Java版本',
+                typeLabel: '服务器类型',
+                typeValue: '多人联机服务器',
+                stepsHeading: '如何加入服务器',
+                step1: '启动 Minecraft Java版客户端',
+                step2: '在主菜单选择"多人游戏"',
+                step3: '点击"添加服务器"或"直接连接"',
+                step4: '在服务器地址栏输入：',
+                step5: '点击"完成"或"加入服务器"开始游戏！',
+                enjoy: '祝您游戏愉快！',
+                icp: 'ICP备案：',
+                police: '公安备案：'
+            },
+            'en': {
+                title: 'Minecraft Server',
+                subtitle: 'Welcome to Our Gaming World',
+                addressLabel: 'Server Address',
+                versionLabel: 'Game Version',
+                versionValue: 'Minecraft Java Edition',
+                requirementLabel: 'Version Requirement',
+                requirementValue: 'All Java Edition versions supported',
+                typeLabel: 'Server Type',
+                typeValue: 'Multiplayer Server',
+                stepsHeading: 'How to Join the Server',
+                step1: 'Launch Minecraft Java Edition client',
+                step2: 'Select "Multiplayer" from the main menu',
+                step3: 'Click "Add Server" or "Direct Connect"',
+                step4: 'Enter server address: ',
+                step5: 'Click "Done" or "Join Server" to start playing!',
+                enjoy: 'Enjoy your game!',
+                icp: 'ICP Registration: ',
+                police: 'Police Registration: '
+            }
+        };
+
+        function setLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const lang = userLang.startsWith('zh') ? 'zh-CN' : 'en';
+            const t = translations[lang];
+
+            document.documentElement.lang = lang;
+            document.getElementById('main-title').textContent = t.title;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('address-label').textContent = t.addressLabel;
+            document.querySelectorAll('.info-label')[0].textContent = t.versionLabel;
+            document.querySelectorAll('.info-value')[0].textContent = t.versionValue;
+            document.querySelectorAll('.info-label')[1].textContent = t.requirementLabel;
+            document.querySelectorAll('.info-value')[1].textContent = t.requirementValue;
+            document.querySelectorAll('.info-label')[2].textContent = t.typeLabel;
+            document.querySelectorAll('.info-value')[2].textContent = t.typeValue;
+            document.getElementById('steps-heading').textContent = t.stepsHeading;
+            document.querySelectorAll('.step-content')[0].innerHTML = t.step1;
+            document.querySelectorAll('.step-content')[1].innerHTML = t.step2;
+            document.querySelectorAll('.step-content')[2].innerHTML = t.step3;
+            document.querySelectorAll('.step-content')[3].innerHTML = t.step4 + '<strong>mcplayer.jsw.ac.cn</strong>';
+            document.querySelectorAll('.step-content')[4].innerHTML = t.step5;
+            document.getElementById('enjoy-text').textContent = t.enjoy;
+            document.getElementById('icp-text').textContent = t.icp;
+            document.getElementById('police-text').textContent = t.police;
+        }
+
+        setLanguage();
+    </script>
 </body>
 </html>
