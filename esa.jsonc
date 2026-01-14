@@ -1,9 +1,0 @@
-{
-  "assets": {
-    "path": "./",
-    "index": "index.html"
-  },
-  "build": {
-    "command": "echo 'No build needed'"
-  }
-}
