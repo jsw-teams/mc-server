@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Minecraft Java Edition Server - mcplayer.jsw.ac.cn">
-    <title>Minecraft Server - mcplayer.jsw.ac.cn</title>
+    <title>Minecraft服务器 - mcplay.jsw.ac.cn</title>
     <style>
         * {
             margin: 0;
@@ -13,346 +12,239 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            background: #ffffff;
-            color: #000000;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans CJK SC";
+            background: #fff;
+            color: #000;
+            line-height: 1.8;
             padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #000000;
-        }
-
         h1 {
-            font-size: clamp(24px, 5vw, 36px);
-            margin-bottom: 10px;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
             font-weight: 700;
         }
 
-        .subtitle {
-            font-size: clamp(14px, 3vw, 18px);
-            margin-top: 10px;
-        }
-
-        .server-address {
-            background: #f5f5f5;
-            border: 2px solid #000000;
-            padding: 30px 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .server-address-label {
-            font-size: clamp(14px, 3vw, 16px);
-            margin-bottom: 10px;
+        h2 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin: 2rem 0 1rem;
             font-weight: 600;
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
         }
 
-        .server-address-text {
-            font-size: clamp(20px, 4vw, 32px);
-            font-weight: 700;
-            word-break: break-all;
-            user-select: all;
-        }
 
-        .info-section {
-            margin: 30px 0;
+
+        .server-info {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 2px solid #000;
+            border-radius: 8px;
         }
 
         .info-item {
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid #000000;
-            background: #ffffff;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
         .info-label {
-            font-weight: 700;
-            margin-bottom: 5px;
-            font-size: clamp(14px, 3vw, 16px);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
         }
 
         .info-value {
-            font-size: clamp(14px, 3vw, 16px);
+            font-size: 1.2rem;
+            font-family: "Courier New", monospace;
+            color: #000;
+            word-break: break-all;
+            background: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 4px;
         }
 
-        .steps {
-            margin: 40px 0;
+        .version-badge {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            font-weight: 600;
         }
 
-        .steps h2 {
-            font-size: clamp(18px, 4vw, 24px);
-            margin-bottom: 20px;
-            font-weight: 700;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 10px;
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #000;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
         }
 
-        .step {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-left: 4px solid #000000;
-            background: #f5f5f5;
-        }
-
-        .step-number {
-            font-weight: 700;
-            font-size: clamp(16px, 3.5vw, 18px);
-            margin-bottom: 5px;
-        }
-
-        .step-content {
-            font-size: clamp(14px, 3vw, 16px);
-        }
-
-        .footer {
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #000;
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 2px solid #000000;
-            font-size: clamp(12px, 2.5vw, 14px);
+            font-size: 0.9rem;
         }
 
-        .beian-info {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #000000;
-        }
-
-        .beian-item {
-            margin: 10px 0;
-        }
-
-        .beian-item a {
-            color: #000000;
-            text-decoration: underline;
-        }
-
-        .beian-item a:hover,
-        .beian-item a:focus {
-            text-decoration: none;
-            outline: 2px solid #000000;
-            outline-offset: 2px;
-        }
-
-        .beian-icon {
-            width: 14px;
-            height: 14px;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-
-        /* 高对比度模式支持 */
-        @media (prefers-contrast: high) {
+                    @media (max-width: 600px) {
             body {
-                background: #ffffff;
-                color: #000000;
+                padding: 15px;
             }
-            .server-address {
-                border-width: 3px;
+
+            .info-value {
+                font-size: 1rem;
             }
         }
 
-        /* 减少动画模式支持 */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
                 transition: none !important;
             }
         }
-
-        /* 打印样式 */
-        @media print {
-            body {
-                background: white;
-            }
-            .server-address {
-                border: 2px solid black;
-            }
-        }
-
-        /* 焦点可见性 */
-        *:focus-visible {
-            outline: 3px solid #000000;
-            outline-offset: 3px;
-        }
-
-        /* 小屏幕优化 */
-        @media (max-width: 600px) {
-            body {
-                padding: 15px;
-            }
-            .server-address {
-                padding: 20px 15px;
-            }
-            .step {
-                padding: 12px;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 id="main-title">Minecraft Server</h1>
-            <p class="subtitle" id="subtitle">Welcome to Our Gaming World</p>
-        </header>
+    <main id="content">
+        <h1 data-lang="title">Minecraft服务器连接信息</h1>
+        
+        <div class="warning" role="alert">
+            <strong data-lang="notice-title">重要提示：</strong>
+            <span data-lang="notice-text">请根据您的游戏版本选择正确的连接方式</span>
+        </div>
 
-        <main>
-            <section class="server-address" aria-labelledby="address-label">
-                <div class="server-address-label" id="address-label">Server Address</div>
-                <div class="server-address-text" role="text" aria-label="Server address mcplayer.jsw.ac.cn">mcplayer.jsw.ac.cn</div>
-            </section>
-
-            <section class="info-section" aria-labelledby="info-heading">
-                <h2 id="info-heading" class="sr-only">Server Information</h2>
-                
+        <section aria-labelledby="java-heading">
+            <h2 id="java-heading" data-lang="java-title">Java版连接方式</h2>
+            <div class="server-info">
                 <div class="info-item">
-                    <div class="info-label" id="version-label">Game Version</div>
-                    <div class="info-value" aria-labelledby="version-label">Minecraft Java Edition</div>
+                    <div class="info-label" data-lang="server-address">服务器地址：</div>
+                    <div class="info-value">mcplay.jsw.ac.cn</div>
                 </div>
-
                 <div class="info-item">
-                    <div class="info-label" id="requirement-label">Version Requirement</div>
-                    <div class="info-value" aria-labelledby="requirement-label">All Java Edition versions supported</div>
+                    <div class="info-label" data-lang="port">端口号：</div>
+                    <div class="info-value" data-lang="no-port">无需填写</div>
                 </div>
-
-                <div class="info-item">
-                    <div class="info-label" id="type-label">Server Type</div>
-                    <div class="info-value" aria-labelledby="type-label">Multiplayer Server</div>
-                </div>
-            </section>
-
-            <section class="steps" aria-labelledby="steps-heading">
-                <h2 id="steps-heading">How to Join the Server</h2>
-                
-                <div class="step">
-                    <div class="step-number">Step 1</div>
-                    <div class="step-content">Launch Minecraft Java Edition client</div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">Step 2</div>
-                    <div class="step-content">Select "Multiplayer" from the main menu</div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">Step 3</div>
-                    <div class="step-content">Click "Add Server" or "Direct Connect"</div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">Step 4</div>
-                    <div class="step-content">Enter server address: <strong>mcplayer.jsw.ac.cn</strong></div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">Step 5</div>
-                    <div class="step-content">Click "Done" or "Join Server" to start playing!</div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <p id="enjoy-text">Enjoy your game!</p>
-            <div class="beian-info">
-                <p class="beian-item">
-                    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">
-                        <span id="icp-text">ICP Registration: </span>蜀ICP备2025143400号
-                    </a>
-                </p>
-                <p class="beian-item">
-                    <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51172402000176" target="_blank" rel="noopener noreferrer">
-                        <img src="/ghs.png" alt="" class="beian-icon">
-                        <span id="police-text">Police Registration: </span>川公网安备51172402000176号
-                    </a>
-                </p>
             </div>
+        </section>
+
+        <section aria-labelledby="bedrock-heading">
+            <h2 id="bedrock-heading" data-lang="bedrock-title">基岩版连接方式</h2>
+            <div class="server-info">
+                <div class="info-item">
+                    <div class="info-label" data-lang="server-address">服务器地址：</div>
+                    <div class="info-value">udpsq.rainplay.cn</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label" data-lang="port">端口号：</div>
+                    <div class="info-value">32705</div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="info-heading">
+            <h2 id="info-heading" data-lang="server-info-title">服务器信息</h2>
+            <div class="info-item">
+                <div class="info-label" data-lang="supported-versions">支持版本：</div>
+                <div>
+                    <span class="version-badge">1.20+</span>
+                    <span class="version-badge" data-lang="java-bedrock">Java & 基岩互通</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-label" data-lang="server-type">服务器类型：</div>
+                <div class="info-value" data-lang="survival-server">联机生存服</div>
+            </div>
+        </section>
+
+        <footer>
+            <p data-lang="footer-text">祝您游戏愉快！如有问题，请联系服务器管理员。</p>
         </footer>
-    </div>
+    </main>
 
     <script>
-        // 多语言支持
         const translations = {
-            'zh-CN': {
-                title: 'Minecraft 服务器',
-                subtitle: '欢迎加入我们的游戏世界',
-                addressLabel: '服务器地址',
-                versionLabel: '游戏版本',
-                versionValue: 'Minecraft Java版',
-                requirementLabel: '版本要求',
-                requirementValue: '支持所有Java版本',
-                typeLabel: '服务器类型',
-                typeValue: '多人联机服务器',
-                stepsHeading: '如何加入服务器',
-                step1: '启动 Minecraft Java版客户端',
-                step2: '在主菜单选择"多人游戏"',
-                step3: '点击"添加服务器"或"直接连接"',
-                step4: '在服务器地址栏输入：',
-                step5: '点击"完成"或"加入服务器"开始游戏！',
-                enjoy: '祝您游戏愉快！',
-                icp: 'ICP备案：',
-                police: '公安备案：'
+            zh: {
+                'title': 'Minecraft服务器连接信息',
+                'notice-title': '重要提示：',
+                'notice-text': '请根据您的游戏版本选择正确的连接方式',
+                'java-title': 'Java版连接方式',
+                'bedrock-title': '基岩版连接方式',
+                'server-address': '服务器地址：',
+                'port': '端口号：',
+                'no-port': '无需填写',
+                'server-info-title': '服务器信息',
+                'supported-versions': '支持版本：',
+                'java-bedrock': 'Java & 基岩互通',
+                'server-type': '服务器类型：',
+                'survival-server': '联机生存服',
+                'footer-text': '祝您游戏愉快！如有问题，请联系服务器管理员。'
             },
-            'en': {
-                title: 'Minecraft Server',
-                subtitle: 'Welcome to Our Gaming World',
-                addressLabel: 'Server Address',
-                versionLabel: 'Game Version',
-                versionValue: 'Minecraft Java Edition',
-                requirementLabel: 'Version Requirement',
-                requirementValue: 'All Java Edition versions supported',
-                typeLabel: 'Server Type',
-                typeValue: 'Multiplayer Server',
-                stepsHeading: 'How to Join the Server',
-                step1: 'Launch Minecraft Java Edition client',
-                step2: 'Select "Multiplayer" from the main menu',
-                step3: 'Click "Add Server" or "Direct Connect"',
-                step4: 'Enter server address: ',
-                step5: 'Click "Done" or "Join Server" to start playing!',
-                enjoy: 'Enjoy your game!',
-                icp: 'ICP Registration: ',
-                police: 'Police Registration: '
+            en: {
+                'title': 'Minecraft Server Connection Information',
+                'notice-title': 'Important Notice:',
+                'notice-text': 'Please choose the correct connection method based on your game version',
+                'java-title': 'Java Edition Connection',
+                'bedrock-title': 'Bedrock Edition Connection',
+                'server-address': 'Server Address:',
+                'port': 'Port:',
+                'no-port': 'Not required',
+                'server-info-title': 'Server Information',
+                'supported-versions': 'Supported Versions:',
+                'java-bedrock': 'Java & Bedrock Cross-play',
+                'server-type': 'Server Type:',
+                'survival-server': 'Multiplayer Survival Server',
+                'footer-text': 'Enjoy your game! Please contact the server administrator if you have any questions.'
+            },
+            ja: {
+                'title': 'Minecraftサーバー接続情報',
+                'notice-title': '重要なお知らせ：',
+                'notice-text': 'ゲームバージョンに応じて正しい接続方法を選択してください',
+                'java-title': 'Java版接続方法',
+                'bedrock-title': '統合版接続方法',
+                'server-address': 'サーバーアドレス：',
+                'port': 'ポート番号：',
+                'no-port': '入力不要',
+                'server-info-title': 'サーバー情報',
+                'supported-versions': '対応バージョン：',
+                'java-bedrock': 'Java & 統合版クロスプレイ',
+                'server-type': 'サーバータイプ：',
+                'survival-server': 'マルチプレイサバイバルサーバー',
+                'footer-text': 'ゲームをお楽しみください！ご質問がある場合は、サーバー管理者にお問い合わせください。'
             }
         };
 
-        function setLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const lang = userLang.startsWith('zh') ? 'zh-CN' : 'en';
-            const t = translations[lang];
-
-            document.documentElement.lang = lang;
-            document.getElementById('main-title').textContent = t.title;
-            document.getElementById('subtitle').textContent = t.subtitle;
-            document.getElementById('address-label').textContent = t.addressLabel;
-            document.querySelectorAll('.info-label')[0].textContent = t.versionLabel;
-            document.querySelectorAll('.info-value')[0].textContent = t.versionValue;
-            document.querySelectorAll('.info-label')[1].textContent = t.requirementLabel;
-            document.querySelectorAll('.info-value')[1].textContent = t.requirementValue;
-            document.querySelectorAll('.info-label')[2].textContent = t.typeLabel;
-            document.querySelectorAll('.info-value')[2].textContent = t.typeValue;
-            document.getElementById('steps-heading').textContent = t.stepsHeading;
-            document.querySelectorAll('.step-content')[0].innerHTML = t.step1;
-            document.querySelectorAll('.step-content')[1].innerHTML = t.step2;
-            document.querySelectorAll('.step-content')[2].innerHTML = t.step3;
-            document.querySelectorAll('.step-content')[3].innerHTML = t.step4 + '<strong>mcplayer.jsw.ac.cn</strong>';
-            document.querySelectorAll('.step-content')[4].innerHTML = t.step5;
-            document.getElementById('enjoy-text').textContent = t.enjoy;
-            document.getElementById('icp-text').textContent = t.icp;
-            document.getElementById('police-text').textContent = t.police;
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang.startsWith('zh')) return 'zh';
+            if (browserLang.startsWith('ja')) return 'ja';
+            return 'en';
         }
 
-        setLanguage();
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'ja' ? 'ja' : 'en';
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // 页面加载时自动检测并设置语言
+        window.addEventListener('DOMContentLoaded', () => {
+            const detectedLang = detectLanguage();
+            changeLanguage(detectedLang);
+        });
     </script>
 </body>
 </html>
