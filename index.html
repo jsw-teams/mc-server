@@ -1,250 +1,280 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft服务器 - mcplay.jsw.ac.cn</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans CJK SC";
-            background: #fff;
-            color: #000;
-            line-height: 1.8;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+  <title>Minecraft服务器 - mcplay.jsw.ac.cn</title>
+  <meta name="description" content="mcplay.jsw.ac.cn 联机信息：Java/基岩版连接方式、版本说明、下载入口与正版购买指引。">
 
-        h1 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
+  <!-- Open Graph (WeChat/Browser Share Preview) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Minecraft服务器 - mcplay.jsw.ac.cn">
+  <meta property="og:description" content="Java/基岩版联机信息、下载入口与正版购买指引。">
+  <meta property="og:url" content="https://mcplay.jsw.ac.cn/">
+  <!-- 注意：请在站点根目录放置此图片（建议 1200x630），并确保可公网访问 -->
+  <meta property="og:image" content="https://mcplay.jsw.ac.cn/og-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="mcplay.jsw.ac.cn">
+  <meta property="og:image:alt" content="Minecraft服务器连接信息预览图">
 
-        h2 {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            margin: 2rem 0 1rem;
-            font-weight: 600;
-            border-bottom: 2px solid #000;
-            padding-bottom: 0.5rem;
-        }
+  <!-- Twitter Card (many apps also read these) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Minecraft服务器 - mcplay.jsw.ac.cn">
+  <meta name="twitter:description" content="Java/基岩版联机信息、下载入口与正版购买指引。">
+  <meta name="twitter:image" content="https://mcplay.jsw.ac.cn/og-share.png">
 
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Sans CJK SC";
+      background:#fff;color:#000;line-height:1.8;padding:20px;max-width:900px;margin:0 auto
+    }
+    a{color:#000;text-decoration:underline}
+    a:hover{text-decoration:none}
+    h1{font-size:clamp(1.75rem,4vw,2.5rem);margin-bottom:1.25rem;font-weight:700}
+    h2{font-size:clamp(1.25rem,3vw,1.75rem);margin:2rem 0 1rem;font-weight:600;border-bottom:2px solid #000;padding-bottom:.5rem}
 
+    .server-info{background:#f5f5f5;padding:1.5rem;margin:1.25rem 0;border:2px solid #000;border-radius:8px}
+    .info-item{margin:1rem 0;padding:1rem;background:#fff;border:1px solid #ddd;border-radius:4px}
+    .info-label{font-weight:600;font-size:1.1rem;margin-bottom:.5rem}
+    .info-value{font-size:1.2rem;font-family:"Courier New",monospace;color:#000;word-break:break-all;background:#f9f9f9;padding:.5rem;border-radius:4px}
+    .version-badge{display:inline-block;background:#000;color:#fff;padding:.5rem 1rem;border-radius:4px;margin:.5rem .5rem .5rem 0;font-weight:600}
+    .warning{background:#fff3cd;border:2px solid #000;padding:1rem;margin:1rem 0;border-radius:4px}
 
-        .server-info {
-            background: #f5f5f5;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border: 2px solid #000;
-            border-radius: 8px;
-        }
+    .hero{margin:1rem 0 1.5rem}
+    .hero figure{margin:0}
+    .hero img{
+      width:100%;
+      height:auto;
+      border:2px solid #000;
+      border-radius:8px;
+      background:#f5f5f5;
+      display:block;
+    }
+    .hero figcaption{
+      margin-top:.6rem;
+      font-size:.95rem;
+      color:#111;
+    }
 
-        .info-item {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+    .downloads{
+      background:#f5f5f5;
+      padding:1.25rem;
+      border:2px solid #000;
+      border-radius:8px;
+      margin:1.25rem 0;
+    }
+    .download-list{list-style:none;padding-left:0;margin:0}
+    .download-list li{padding:.35rem 0}
+    .muted{color:#111;font-size:.95rem}
+    .fineprint{color:#222;font-size:.9rem;margin-top:.75rem}
+    .btnrow{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.75rem}
+    .btn{
+      display:inline-block;
+      padding:.55rem .9rem;
+      border:2px solid #000;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      background:#fff;
+    }
+    .btn:focus{outline:3px solid #000;outline-offset:2px}
 
-        .info-label {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-value {
-            font-size: 1.2rem;
-            font-family: "Courier New", monospace;
-            color: #000;
-            word-break: break-all;
-            background: #f9f9f9;
-            padding: 0.5rem;
-            border-radius: 4px;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background: #000;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            margin: 0.5rem 0.5rem 0.5rem 0;
-            font-weight: 600;
-        }
-
-        .warning {
-            background: #fff3cd;
-            border: 2px solid #000;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid #000;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-                    @media (max-width: 600px) {
-            body {
-                padding: 15px;
-            }
-
-            .info-value {
-                font-size: 1rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-    </style>
+    footer{margin-top:3rem;padding-top:2rem;border-top:2px solid #000;text-align:center;font-size:.9rem}
+    @media (max-width:600px){body{padding:15px}.info-value{font-size:1rem}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
 </head>
 <body>
-    <main id="content">
-        <h1 data-lang="title">Minecraft服务器连接信息</h1>
-        
-        <div class="warning" role="alert">
-            <strong data-lang="notice-title">重要提示：</strong>
-            <span data-lang="notice-text">请根据您的游戏版本选择正确的连接方式</span>
+  <main id="content">
+    <h1 data-lang="title">Minecraft服务器连接信息</h1>
+
+    <div class="warning" role="alert">
+      <strong data-lang="notice-title">重要提示：</strong>
+      <span data-lang="notice-text">请根据您的游戏版本选择正确的连接方式</span>
+    </div>
+
+    <!-- 联机图（请将图片放在同站点目录，例如 /online.png） -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <h2 id="hero-heading" data-lang="hero-title">联机示意图</h2>
+      <figure>
+        <img src="/online.png" alt="不妨与玩家打个招呼" loading="lazy" decoding="async">
+    </section>
+
+    <section aria-labelledby="java-heading">
+      <h2 id="java-heading" data-lang="java-title">Java版连接方式</h2>
+      <div class="server-info">
+        <div class="info-item">
+          <div class="info-label" data-lang="server-address">服务器地址：</div>
+          <div class="info-value">mcplay.jsw.ac.cn</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label" data-lang="port">端口号：</div>
+          <div class="info-value" data-lang="no-port">无需填写</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="bedrock-heading">
+      <h2 id="bedrock-heading" data-lang="bedrock-title">基岩版连接方式</h2>
+      <div class="server-info">
+        <div class="info-item">
+          <div class="info-label" data-lang="server-address">服务器地址：</div>
+          <div class="info-value">udpsq.rainplay.cn</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label" data-lang="port">端口号：</div>
+          <div class="info-value">32705</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="info-heading">
+      <h2 id="info-heading" data-lang="server-info-title">服务器信息</h2>
+      <div class="info-item">
+        <div class="info-label" data-lang="supported-versions">支持版本：</div>
+        <div>
+          <span class="version-badge">1.20+</span>
+          <span class="version-badge" data-lang="java-bedrock">Java & 基岩互通</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-label" data-lang="server-type">服务器类型：</div>
+        <div class="info-value" data-lang="survival-server">联机生存服</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="download-heading">
+      <h2 id="download-heading" data-lang="download-title">游戏下载</h2>
+      <div class="downloads">
+        <ul class="download-list">
+          <li>
+            <span data-lang="download-android">安卓下载：</span>
+            <a href="https://mc.minebbs.com/" target="_blank" rel="noopener noreferrer">mc.minebbs.com</a>
+          </li>
+          <li>
+            <span data-lang="download-windows">Windows 下载：</span>
+            <a href="https://www.mcappx.com" target="_blank" rel="noopener noreferrer">mcappx.com</a>
+          </li>
+        </ul>
+
+        <div class="btnrow" aria-label="links">
+          <a class="btn" href="https://www.minecraft.net/" target="_blank" rel="noopener noreferrer" data-lang="buy-official-btn">支持正版购买</a>
+          <a class="btn" href="#java-heading" data-lang="jump-java-btn">跳到 Java 连接</a>
+          <a class="btn" href="#bedrock-heading" data-lang="jump-bedrock-btn">跳到 基岩 连接</a>
         </div>
 
-        <section aria-labelledby="java-heading">
-            <h2 id="java-heading" data-lang="java-title">Java版连接方式</h2>
-            <div class="server-info">
-                <div class="info-item">
-                    <div class="info-label" data-lang="server-address">服务器地址：</div>
-                    <div class="info-value">mcplay.jsw.ac.cn</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label" data-lang="port">端口号：</div>
-                    <div class="info-value" data-lang="no-port">无需填写</div>
-                </div>
-            </div>
-        </section>
+        <p class="fineprint" data-lang="download-note">
+          友情提示：第三方下载站请自行甄别风险；若条件允许，建议支持正版（官方商店）。
+        </p>
+      </div>
+    </section>
 
-        <section aria-labelledby="bedrock-heading">
-            <h2 id="bedrock-heading" data-lang="bedrock-title">基岩版连接方式</h2>
-            <div class="server-info">
-                <div class="info-item">
-                    <div class="info-label" data-lang="server-address">服务器地址：</div>
-                    <div class="info-value">udpsq.rainplay.cn</div>
-                </div>
-                <div class="info-item">
-                    <div class="info-label" data-lang="port">端口号：</div>
-                    <div class="info-value">32705</div>
-                </div>
-            </div>
-        </section>
+    <footer>
+      <p data-lang="footer-text">祝您游戏愉快！如有问题，请联系服务器管理员。</p>
+    </footer>
+  </main>
 
-        <section aria-labelledby="info-heading">
-            <h2 id="info-heading" data-lang="server-info-title">服务器信息</h2>
-            <div class="info-item">
-                <div class="info-label" data-lang="supported-versions">支持版本：</div>
-                <div>
-                    <span class="version-badge">1.20+</span>
-                    <span class="version-badge" data-lang="java-bedrock">Java & 基岩互通</span>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-label" data-lang="server-type">服务器类型：</div>
-                <div class="info-value" data-lang="survival-server">联机生存服</div>
-            </div>
-        </section>
+  <script>
+    const translations = {
+      zh: {
+        "title": "Minecraft服务器连接信息",
+        "notice-title": "重要提示：",
+        "notice-text": "请根据您的游戏版本选择正确的连接方式",
+        "hero-title": "联机示意图",
+        "hero-caption": "提示：若图片未显示，请检查是否已上传 /online.png。",
+        "java-title": "Java版连接方式",
+        "bedrock-title": "基岩版连接方式",
+        "server-address": "服务器地址：",
+        "port": "端口号：",
+        "no-port": "无需填写",
+        "server-info-title": "服务器信息",
+        "supported-versions": "支持版本：",
+        "java-bedrock": "Java & 基岩互通",
+        "server-type": "服务器类型：",
+        "survival-server": "联机生存服",
+        "download-title": "游戏下载",
+        "download-android": "安卓下载：",
+        "download-windows": "Windows 下载：",
+        "buy-official-btn": "支持正版购买",
+        "jump-java-btn": "跳到 Java 连接",
+        "jump-bedrock-btn": "跳到 基岩 连接",
+        "download-note": "友情提示：第三方下载站请自行甄别风险；若条件允许，建议支持正版（官方商店）。",
+        "footer-text": "祝您游戏愉快！如有问题，请联系服务器管理员。"
+      },
+      en: {
+        "title": "Minecraft Server Connection Information",
+        "notice-title": "Important Notice:",
+        "notice-text": "Please choose the correct connection method based on your game version",
+        "hero-title": "Multiplayer Guide Image",
+        "hero-caption": "Tip: If the image doesn’t show, make sure /online.png has been uploaded.",
+        "java-title": "Java Edition Connection",
+        "bedrock-title": "Bedrock Edition Connection",
+        "server-address": "Server Address:",
+        "port": "Port:",
+        "no-port": "Not required",
+        "server-info-title": "Server Information",
+        "supported-versions": "Supported Versions:",
+        "java-bedrock": "Java & Bedrock Cross-play",
+        "server-type": "Server Type:",
+        "survival-server": "Multiplayer Survival Server",
+        "download-title": "Download",
+        "download-android": "Android:",
+        "download-windows": "Windows:",
+        "buy-official-btn": "Buy Official Version",
+        "jump-java-btn": "Go to Java",
+        "jump-bedrock-btn": "Go to Bedrock",
+        "download-note": "Friendly reminder: Use third-party download sites at your own risk. If possible, please support the official version.",
+        "footer-text": "Enjoy your game! Please contact the server administrator if you have any questions."
+      },
+      ja: {
+        "title": "Minecraftサーバー接続情報",
+        "notice-title": "重要なお知らせ：",
+        "notice-text": "ゲームバージョンに応じて正しい接続方法を選択してください",
+        "hero-title": "マルチプレイ案内画像",
+        "hero-caption": "ヒント：画像が表示されない場合は /online.png をアップロードしてください。",
+        "java-title": "Java版接続方法",
+        "bedrock-title": "統合版接続方法",
+        "server-address": "サーバーアドレス：",
+        "port": "ポート番号：",
+        "no-port": "入力不要",
+        "server-info-title": "サーバー情報",
+        "supported-versions": "対応バージョン：",
+        "java-bedrock": "Java & 統合版クロスプレイ",
+        "server-type": "サーバータイプ：",
+        "survival-server": "マルチプレイサバイバルサーバー",
+        "download-title": "ダウンロード",
+        "download-android": "Android：",
+        "download-windows": "Windows：",
+        "buy-official-btn": "公式版を購入",
+        "jump-java-btn": "Javaへ",
+        "jump-bedrock-btn": "統合版へ",
+        "download-note": "注意：第三者サイトの利用は自己責任で。可能なら公式版の購入をご検討ください。",
+        "footer-text": "ゲームをお楽しみください！ご質問がある場合は、サーバー管理者にお問い合わせください。"
+      }
+    };
 
-        <footer>
-            <p data-lang="footer-text">祝您游戏愉快！如有问题，请联系服务器管理员。</p>
-        </footer>
-    </main>
+    function detectLanguage() {
+      const browserLang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
+      if (browserLang.startsWith("zh")) return "zh";
+      if (browserLang.startsWith("ja")) return "ja";
+      return "en";
+    }
 
-    <script>
-        const translations = {
-            zh: {
-                'title': 'Minecraft服务器连接信息',
-                'notice-title': '重要提示：',
-                'notice-text': '请根据您的游戏版本选择正确的连接方式',
-                'java-title': 'Java版连接方式',
-                'bedrock-title': '基岩版连接方式',
-                'server-address': '服务器地址：',
-                'port': '端口号：',
-                'no-port': '无需填写',
-                'server-info-title': '服务器信息',
-                'supported-versions': '支持版本：',
-                'java-bedrock': 'Java & 基岩互通',
-                'server-type': '服务器类型：',
-                'survival-server': '联机生存服',
-                'footer-text': '祝您游戏愉快！如有问题，请联系服务器管理员。'
-            },
-            en: {
-                'title': 'Minecraft Server Connection Information',
-                'notice-title': 'Important Notice:',
-                'notice-text': 'Please choose the correct connection method based on your game version',
-                'java-title': 'Java Edition Connection',
-                'bedrock-title': 'Bedrock Edition Connection',
-                'server-address': 'Server Address:',
-                'port': 'Port:',
-                'no-port': 'Not required',
-                'server-info-title': 'Server Information',
-                'supported-versions': 'Supported Versions:',
-                'java-bedrock': 'Java & Bedrock Cross-play',
-                'server-type': 'Server Type:',
-                'survival-server': 'Multiplayer Survival Server',
-                'footer-text': 'Enjoy your game! Please contact the server administrator if you have any questions.'
-            },
-            ja: {
-                'title': 'Minecraftサーバー接続情報',
-                'notice-title': '重要なお知らせ：',
-                'notice-text': 'ゲームバージョンに応じて正しい接続方法を選択してください',
-                'java-title': 'Java版接続方法',
-                'bedrock-title': '統合版接続方法',
-                'server-address': 'サーバーアドレス：',
-                'port': 'ポート番号：',
-                'no-port': '入力不要',
-                'server-info-title': 'サーバー情報',
-                'supported-versions': '対応バージョン：',
-                'java-bedrock': 'Java & 統合版クロスプレイ',
-                'server-type': 'サーバータイプ：',
-                'survival-server': 'マルチプレイサバイバルサーバー',
-                'footer-text': 'ゲームをお楽しみください！ご質問がある場合は、サーバー管理者にお問い合わせください。'
-            }
-        };
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : lang === "ja" ? "ja" : "en";
+      document.querySelectorAll("[data-lang]").forEach((el) => {
+        const key = el.getAttribute("data-lang");
+        if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];
+      });
+    }
 
-        function detectLanguage() {
-            const browserLang = navigator.language || navigator.userLanguage;
-            if (browserLang.startsWith('zh')) return 'zh';
-            if (browserLang.startsWith('ja')) return 'ja';
-            return 'en';
-        }
-
-        function changeLanguage(lang) {
-            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'ja' ? 'ja' : 'en';
-            const elements = document.querySelectorAll('[data-lang]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-lang');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
-        }
-
-        // 页面加载时自动检测并设置语言
-        window.addEventListener('DOMContentLoaded', () => {
-            const detectedLang = detectLanguage();
-            changeLanguage(detectedLang);
-        });
-    </script>
+    window.addEventListener("DOMContentLoaded", () => {
+      changeLanguage(detectLanguage());
+    });
+  </script>
 </body>
 </html>
